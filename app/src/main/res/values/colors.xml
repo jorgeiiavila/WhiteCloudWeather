@@ -3,4 +3,15 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="clear_day">#E65100</color>
+    <color name="clear_night">#757575</color>
+    <color name="rain">#2196F3</color>
+    <color name="snow">#FFFFFF</color>
+    <color name="sleet">#B2EBF2</color>
+    <color name="wind">#69F0AE</color>
+    <color name="fog">#757575</color>
+    <color name="cloudy">#424242</color>
+    <color name="partly_cloudy_day">#FF8A65</color>
+    <color name="partly_cloudy_night">#757575</color>
 </resources>

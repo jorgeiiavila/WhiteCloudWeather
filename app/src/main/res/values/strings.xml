@@ -1,3 +1,41 @@
 <resources>
     <string name="app_name">WhiteCloud Weather</string>
+    <string name="action_settings">Settings</string>
+
+    // Settings strings
+
+    // Main screen strings
+    <string name="now">Now</string>
+    <string name="next_24_hours">Next 24 hours</string>
+    <string name="next_7_days">Next 7 days</string>
+    <string name="more">More</string>
+
+    // Location strings
+    <string name="location_setting">Location</string>
+    <string name="location_setting_description">Type a location</string>
+    <string name="weather_unit">Unit</string>
+
+    // Units strings
+    <string name="unit_setting">Unit</string>
+    <string name="unit_setting_description">Select an unit</string>
+    <string name="c_unit">metric</string>
+    <string name="f_unit">imperial</string>
+
+    // Main Fragment strings
+    <string name="update_dialog_title_text">Updating...</string>
+    <string name="update_dialog_description_text">Downloading latest weather data</string>
+
+    // More data card strings
+    <string name="wind_speed">Wind Speed</string>
+    <string name="humidity">Humidity</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="pressure">Pressure</string>
+    <string name="dew_point">Dew Point</string>
+    <string name="sunset">Sunset</string>
+
+    // Moon Phases
+    <string name="new_moon">New Moon</string>
+    <string name="quarter_moon">Quarter Moon</string>
+    <string name="full_moon">Full Moon</string>
+    <string name="last_quarter_moon">Last Quarter Moon</string>
 </resources>

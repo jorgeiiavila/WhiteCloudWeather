@@ -1,0 +1,22 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="General">
+
+        <EditTextPreference
+            android:key="location_preference"
+            android:title="@string/location_setting"
+            android:summary="@string/location_setting_description"
+            android:dialogTitle="@string/location_setting" />
+
+        <ListPreference
+            android:key="unit_preference"
+            android:title="@string/unit_setting"
+            android:dialogTitle="@string/unit_setting_description"
+            android:entries="@array/units_entries"
+            android:entryValues="@array/units_values"
+            android:defaultValue="@string/c_unit" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
