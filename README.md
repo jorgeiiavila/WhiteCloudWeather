@@ -10,8 +10,8 @@ WhiteCloud weather is a simple weather app for Android.
 -Forecast for the next 24 hours
 
 ## Screenshots
-![test](https://user-images.githubusercontent.com/21300658/34325945-8ac3b4ea-e85e-11e7-9950-b614ad6917ef.png){:height="192px" width="108px"}
-![test](https://user-images.githubusercontent.com/21300658/34325944-8aa50630-e85e-11e7-8b57-8fc901693372.png){:height="192px" width="108px"}
+[<img src="https://user-images.githubusercontent.com/21300658/34325945-8ac3b4ea-e85e-11e7-9950-b614ad6917ef.png" width=250>](https://user-images.githubusercontent.com/21300658/34325945-8ac3b4ea-e85e-11e7-9950-b614ad6917ef.png)
+[<img src="https://user-images.githubusercontent.com/21300658/34325944-8aa50630-e85e-11e7-8b57-8fc901693372.png" width=250>](https://user-images.githubusercontent.com/21300658/34325944-8aa50630-e85e-11e7-8b57-8fc901693372.png)
 
 ## Author
 Jorge Ivan Iribe - App developer
