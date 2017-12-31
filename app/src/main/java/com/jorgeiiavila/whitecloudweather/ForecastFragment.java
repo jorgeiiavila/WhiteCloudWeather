@@ -473,7 +473,7 @@ public class ForecastFragment extends Fragment implements SwipeRefreshLayout.OnR
             try {
 
                 // Construct the DarkSky Api URL for retrieving the data
-                String key = "5e5732364b1d7c6060c4983ed9c1276f";
+                String key = "";
 
                 try {
                     ApplicationInfo appInfo = getActivity().getPackageManager().getApplicationInfo(
