@@ -40,7 +40,7 @@ public abstract class Weather {
 
     protected String convertToHour(String time) {
         String currentHour;
-        long dv = Long.valueOf(time) * 1000;// its need to be in milisecond
+        long dv = Long.valueOf(time) * 1000;// its need to be in milliseconds
         Date df = new java.util.Date(dv);
         SimpleDateFormat hourFormat = new SimpleDateFormat("h:mma");
         hourFormat.setTimeZone(TimeZone.getTimeZone(mTimeZone));

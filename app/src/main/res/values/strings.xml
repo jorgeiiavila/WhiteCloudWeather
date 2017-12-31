@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">WhiteCloud Weather</string>
-    <string name="action_settings">Settings</string>
+    <string name="preference_file_key">com.jorgeiiavila.whitecloudweather.PREFERENCE_FILE_KEY</string>
 
-    // Settings strings
+    // Menu strings
+    <string name="action_settings">Settings</string>
 
     // Main screen strings
     <string name="now">Now</string>
@@ -15,9 +16,9 @@
     <string name="location_setting_description">Type a location</string>
     <string name="weather_unit">Unit</string>
 
-    // Units strings
-    <string name="unit_setting">Unit</string>
-    <string name="unit_setting_description">Select an unit</string>
+    // Temperature strings
+    <string name="temperature_setting">Temperature</string>
+    <string name="temperature_setting_description">Select an unit</string>
     <string name="c_unit">metric</string>
     <string name="f_unit">imperial</string>
 
