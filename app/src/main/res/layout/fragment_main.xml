@@ -9,539 +9,263 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <ScrollView
-        android:id="@+id/main_scroll_view"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/main_scroll_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical">
+
+                <!--Now-->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/now"
+                    android:textSize="14sp" />
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/now_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/relative_layout_one"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:id="@+id/current_city_main"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="-26dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="-11dp"
+                            android:text=""
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="San Pedro Garza García" />
+
+                        <TextView
+                            android:id="@+id/current_country_main"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="-15dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="0dp"
+                            android:textSize="17sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/current_city_main"
+                            tools:text="Nuevo León" />
+
+                        <TextView
+                            android:id="@+id/apparent_temperature_main"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="-4dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="12dp"
+                            android:textSize="13sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/current_country_main"
+                            tools:text="Feels like 37°" />
+
+
+                        <TextView
+                            android:id="@+id/current_temperature_main"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="-3dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="-1dp"
+                            android:textSize="40sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/apparent_temperature_main"
+                            tools:text="35°" />
+
+                        <ImageView
+                            android:id="@+id/umbrella_icon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:src="@drawable/ic_umbrella_outline_white_48dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/current_temperature_main"
+                            app:layout_constraintLeft_toRightOf="@+id/current_temperature_main"
+                            app:layout_constraintTop_toTopOf="@+id/current_temperature_main"
+                            app:layout_constraintVertical_bias="0.571" />
+
+                        <TextView
+                            android:id="@+id/rain_probability"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="-11dp"
+                            android:layout_marginStart="0dp"
+                            android:textSize="13sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/umbrella_icon"
+                            app:layout_constraintLeft_toRightOf="@+id/umbrella_icon"
+                            tools:text="30%" />
+
+                        <ImageView
+                            android:id="@+id/arrow_down_icon"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:src="@drawable/ic_keyboard_arrow_down_white_48dp"
+                            app:layout_constraintLeft_toLeftOf="@+id/current_temperature_main"
+                            app:layout_constraintTop_toBottomOf="@+id/current_temperature_main" />
+
+                        <ImageView
+                            android:id="@+id/arrow_up_icon"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="0dp"
+                            android:src="@drawable/ic_keyboard_arrow_up_white_48dp"
+                            app:layout_constraintLeft_toRightOf="@+id/arrow_down_icon"
+                            app:layout_constraintTop_toBottomOf="@+id/current_temperature_main" />
+
+                        <TextView
+                            android:id="@+id/min_temperature"
+                            android:layout_width="25dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="0dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="1dp"
+                            android:gravity="center"
+                            android:textSize="13sp"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintLeft_toLeftOf="@+id/arrow_down_icon"
+                            app:layout_constraintRight_toRightOf="@+id/arrow_down_icon"
+                            app:layout_constraintTop_toBottomOf="@+id/arrow_down_icon"
+                            tools:text="-18°" />
+
+                        <TextView
+                            android:id="@+id/max_temperature"
+                            android:layout_width="25dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_marginTop="1dp"
+                            android:gravity="center"
+                            android:text="8°"
+                            android:textSize="13dp"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintLeft_toLeftOf="@+id/arrow_up_icon"
+                            app:layout_constraintRight_toRightOf="@+id/arrow_up_icon"
+                            app:layout_constraintTop_toBottomOf="@+id/arrow_up_icon" />
+
+
+                        <ImageView
+                            android:id="@+id/weather_icon"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginTop="29dp"
+                            android:src="@drawable/sun_black"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintLeft_toLeftOf="@+id/hour"
+                            app:layout_constraintRight_toRightOf="@+id/hour"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <TextClock
+                            android:id="@+id/hour"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="-5dp"
+                            android:layout_marginRight="-30dp"
+                            android:gravity="center"
+                            android:paddingBottom="0dp"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            tools:text="4:20AM" />
+
+                    </android.support.constraint.ConstraintLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <!--Next 24 hours-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/next_24_hours"
+                    android:textSize="14sp" />
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/hourly_forecast_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/hourly_forecast_recycler_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                </android.support.v7.widget.CardView>
+
+                <!--Next 7 Days-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/next_7_days"
+                    android:textSize="14sp" />
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/daily_forecast_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/daily_forecast_recycler_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                </android.support.v7.widget.CardView>
+
+                <!--More Data-->
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/add_city_fab"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="16dp"
             android:layout_marginRight="16dp"
-            android:orientation="vertical">
-
-            <!--Now-->
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/now"
-                android:textSize="14sp" />
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/now_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/relative_layout_one"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:id="@+id/current_city_main"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="-26dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="-11dp"
-                        android:text=""
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="San Pedro Garza García" />
-
-                    <TextView
-                        android:id="@+id/current_country_main"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="-15dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="0dp"
-                        android:textSize="17sp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/current_city_main"
-                        tools:text="Nuevo León" />
-
-                    <TextView
-                        android:id="@+id/apparent_temperature_main"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="-4dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="12dp"
-                        android:textSize="13sp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/current_country_main"
-                        tools:text="Feels like 37°" />
-
-
-                    <TextView
-                        android:id="@+id/current_temperature_main"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="-3dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="-1dp"
-                        android:textSize="40sp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/apparent_temperature_main"
-                        tools:text="35°" />
-
-                    <ImageView
-                        android:id="@+id/umbrella_icon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:src="@drawable/ic_umbrella_outline_white_48dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/current_temperature_main"
-                        app:layout_constraintLeft_toRightOf="@+id/current_temperature_main"
-                        app:layout_constraintTop_toTopOf="@+id/current_temperature_main"
-                        app:layout_constraintVertical_bias="0.571" />
-
-                    <TextView
-                        android:id="@+id/rain_probability"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="-11dp"
-                        android:layout_marginStart="0dp"
-                        android:textSize="13sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/umbrella_icon"
-                        app:layout_constraintLeft_toRightOf="@+id/umbrella_icon"
-                        tools:text="30%" />
-
-                    <ImageView
-                        android:id="@+id/arrow_down_icon"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:src="@drawable/ic_keyboard_arrow_down_white_48dp"
-                        app:layout_constraintLeft_toLeftOf="@+id/current_temperature_main"
-                        app:layout_constraintTop_toBottomOf="@+id/current_temperature_main" />
-
-                    <ImageView
-                        android:id="@+id/arrow_up_icon"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="0dp"
-                        android:src="@drawable/ic_keyboard_arrow_up_white_48dp"
-                        app:layout_constraintLeft_toRightOf="@+id/arrow_down_icon"
-                        app:layout_constraintTop_toBottomOf="@+id/current_temperature_main" />
-
-                    <TextView
-                        android:id="@+id/min_temperature"
-                        android:layout_width="25dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="0dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="1dp"
-                        android:gravity="center"
-                        android:textSize="13sp"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintLeft_toLeftOf="@+id/arrow_down_icon"
-                        app:layout_constraintRight_toRightOf="@+id/arrow_down_icon"
-                        app:layout_constraintTop_toBottomOf="@+id/arrow_down_icon"
-                        tools:text="-18°" />
-
-                    <TextView
-                        android:id="@+id/max_temperature"
-                        android:layout_width="25dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="0dp"
-                        android:layout_marginRight="0dp"
-                        android:layout_marginTop="1dp"
-                        android:gravity="center"
-                        android:text="8°"
-                        android:textSize="13dp"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintLeft_toLeftOf="@+id/arrow_up_icon"
-                        app:layout_constraintRight_toRightOf="@+id/arrow_up_icon"
-                        app:layout_constraintTop_toBottomOf="@+id/arrow_up_icon" />
-
-
-                    <ImageView
-                        android:id="@+id/weather_icon"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginTop="29dp"
-                        android:src="@drawable/sun_black"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintLeft_toLeftOf="@+id/hour"
-                        app:layout_constraintRight_toRightOf="@+id/hour"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-
-                    <TextClock
-                        android:id="@+id/hour"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="-5dp"
-                        android:layout_marginRight="-30dp"
-                        android:gravity="center"
-                        android:paddingBottom="0dp"
-                        android:textSize="18sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        tools:text="4:20AM" />
-
-                </android.support.constraint.ConstraintLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--Next 24 hours-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/next_24_hours"
-                android:textSize="14sp" />
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/hourly_forecast_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/hourly_forecast_recycler_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                </android.support.v7.widget.RecyclerView>
-
-            </android.support.v7.widget.CardView>
-
-            <!--Next 7 Days-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/next_7_days"
-                android:textSize="14sp" />
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/daily_forecast_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/daily_forecast_recycler_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                </android.support.v7.widget.RecyclerView>
-
-            </android.support.v7.widget.CardView>
-
-            <!--More Data-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/more"
-                android:textSize="14sp" />
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/more_data_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardElevation="0dp">
-
-                <android.support.constraint.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="16dp">
-
-
-                    <TextView
-                        android:id="@+id/pressure"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginStart="8dp"
-                        android:text="1000mb"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/wind_speed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="0dp"
-                        android:text="7 m/h"
-                        app:layout_constraintLeft_toLeftOf="@+id/textView4"
-                        app:layout_constraintRight_toRightOf="@+id/textView4"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/humidity"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginStart="8dp"
-                        android:text="58%"
-                        app:layout_constraintHorizontal_bias="0.4"
-                        app:layout_constraintLeft_toLeftOf="@+id/textView6"
-                        app:layout_constraintRight_toRightOf="@+id/textView6"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Wind Speed"
-                        app:layout_constraintHorizontal_bias="0.505"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toLeftOf="@+id/textView5"
-                        app:layout_constraintTop_toBottomOf="@+id/wind_speed" />
-
-                    <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Pressure"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/pressure" />
-
-                    <TextView
-                        android:id="@+id/textView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Humidity"
-                        app:layout_constraintHorizontal_bias="0.505"
-                        app:layout_constraintLeft_toRightOf="@+id/textView5"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/humidity" />
-
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView10"
-                        app:layout_constraintRight_toRightOf="@+id/imageView5"
-                        app:layout_constraintTop_toTopOf="@+id/dew_point"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:srcCompat="@drawable/ic_arrow_right_white_24dp" />
-
-                    <ImageView
-                        android:id="@+id/imageView8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView11"
-                        app:layout_constraintRight_toRightOf="@+id/imageView3"
-                        app:layout_constraintTop_toTopOf="@+id/sunrise"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:srcCompat="@drawable/ic_arrow_right_white_24dp" />
-
-                    <ImageView
-                        android:id="@+id/imageView7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView12"
-                        app:layout_constraintRight_toRightOf="@+id/imageView4"
-                        app:layout_constraintTop_toTopOf="@+id/sunset"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:srcCompat="@drawable/ic_arrow_right_white_24dp" />
-
-                    <ImageView
-                        android:id="@+id/imageView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="0dp"
-                        android:layout_marginRight="-12dp"
-                        android:layout_marginTop="0dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/moon_state"
-                        app:layout_constraintRight_toRightOf="@+id/imageView"
-                        app:layout_constraintTop_toTopOf="@+id/moon_state"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:srcCompat="@drawable/ic_arrow_right_white_24dp" />
-
-                    <ImageView
-                        android:id="@+id/imageView5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView4"
-                        app:layout_constraintRight_toLeftOf="@+id/textView4"
-                        app:layout_constraintTop_toTopOf="@+id/wind_speed"
-                        app:srcCompat="@drawable/ic_arrow_right_white_24dp" />
-
-                    <ImageView
-                        android:id="@+id/imageView3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView5"
-                        app:layout_constraintRight_toLeftOf="@+id/textView5"
-                        app:layout_constraintTop_toTopOf="@+id/pressure"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:srcCompat="@drawable/ic_arrow_right_white_24dp" />
-
-                    <ImageView
-                        android:id="@+id/imageView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView6"
-                        app:layout_constraintRight_toLeftOf="@+id/textView6"
-                        app:layout_constraintTop_toTopOf="@+id/humidity"
-                        app:srcCompat="@drawable/ic_arrow_right_white_24dp" />
-
-                    <TextView
-                        android:id="@+id/sunrise"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="63dp"
-                        android:text="6:40AM"
-                        app:layout_constraintHorizontal_bias="0.508"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/dew_point"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="63dp"
-                        android:text="30%"
-                        app:layout_constraintLeft_toLeftOf="@+id/textView10"
-                        app:layout_constraintRight_toRightOf="@+id/textView10"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/sunset"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="63dp"
-                        android:text="8:20PM"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintLeft_toLeftOf="@+id/textView12"
-                        app:layout_constraintRight_toRightOf="@+id/textView12"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textView10"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Dew Point"
-                        app:layout_constraintHorizontal_bias="0.505"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toLeftOf="@+id/textView11"
-                        app:layout_constraintTop_toBottomOf="@+id/dew_point" />
-
-                    <TextView
-                        android:id="@+id/textView11"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Sunrise"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/sunrise" />
-
-                    <TextView
-                        android:id="@+id/textView12"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Sunset"
-                        app:layout_constraintHorizontal_bias="0.505"
-                        app:layout_constraintLeft_toRightOf="@+id/textView11"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/sunset" />
-
-                    <TextView
-                        android:id="@+id/moon_state"
-                        android:layout_width="wrap_content"
-                        android:layout_height="16dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginLeft="12dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="136dp"
-                        android:text="Full Moon"
-                        app:layout_constraintLeft_toRightOf="@+id/imageView6"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </android.support.constraint.ConstraintLayout>
-
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
-
-    </ScrollView>
+            android:clickable="true"
+            app:backgroundTint="#F44336 "
+            app:fabSize="normal"
+            app:srcCompat="@drawable/ic_add" />
+    </FrameLayout>
 
 </android.support.v4.widget.SwipeRefreshLayout>

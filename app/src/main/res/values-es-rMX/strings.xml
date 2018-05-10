@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WhiteCloud Weather</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="now">Ahora</string>
+    <string name="next_24_hours">Próximas 24 horas</string>
+    <string name="next_7_days">Próximos 7 días</string>
+    <string name="more">Más</string>
+    <string name="location_setting">Ubicación</string>
+    <string name="location_setting_description">Selecciona una ubicación</string>
+    <string name="weather_unit">Unidad</string>
+    <string name="temperature_setting">Temperatura</string>
+    <string name="temperature_setting_description">Selecciona una unidad</string>
+    <string name="c_unit">Celsius</string>
+    <string name="f_unit">Fahrenheit</string>
+    <string name="update_dialog_title_text">Actualizando...</string>
+    <string name="update_dialog_description_text">Descargando información más reciente</string>
+    <string name="wind_speed">Velocidad del viento</string>
+    <string name="humidity">Humedad</string>
+    <string name="sunrise">Amanecer</string>
+    <string name="pressure">Presión</string>
+    <string name="dew_point">Rocío</string>
+    <string name="sunset">Atardecer</string>
+    <string name="new_moon">Luna Nueva</string>
+    <string name="quarter_moon">Cuarto Creciente</string>
+    <string name="full_moon">Luna Llena</string>
+    <string name="last_quarter_moon">Cuarto Menguante</string>
+    <string name="preference_file_key">com.jorgeiiavila.whitecloudweather.PREFERENCE_FILE_KEY</string>
+</resources>

@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -63,7 +64,6 @@ public class ForecastFragment extends Fragment implements SwipeRefreshLayout.OnR
 
     SharedPreferences sharedPreferences;
 
-    SwipeRefreshLayout mSwipeRefreshLayout;
     CardView mCurrentData;
     CardView mNextHours;
     CardView mNextDays;
@@ -86,6 +86,8 @@ public class ForecastFragment extends Fragment implements SwipeRefreshLayout.OnR
     private TextView mMoonPhase;
     private ImageView mWeatherIcon;
 
+    private FloatingActionButton mFab;
+
     public ForecastFragment() {
         // Required empty public constructor
     }
@@ -98,42 +100,12 @@ public class ForecastFragment extends Fragment implements SwipeRefreshLayout.OnR
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         setHasOptionsMenu(true);
 
-        if (savedInstanceState != null) {
-            Gson gson = new Gson();
-            String city = savedInstanceState.getString("city");
-            currentCity = gson.fromJson(city, City.class);
-            mCity = savedInstanceState.getString("city_name");
-            mCountry = savedInstanceState.getString("country_name");
-        }
-
-        // SwipeRefreshLayout
-        mSwipeRefreshLayout = rootView.findViewById(R.id.main_fragment_layout);
-        mSwipeRefreshLayout.setOnRefreshListener(this);
-
         return rootView;
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        Gson gson = new Gson();
-        String city = gson.toJson(currentCity);
-        outState.putString("city", city);
-        outState.putString("city_name", mCity);
-        outState.putString("country_name", mCountry);
     }
 
     @Override
     public void onRefresh() {
 
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (currentCity != null) {
-            updateWeatherInfo();
-        }
     }
 
     @Override
@@ -148,16 +120,25 @@ public class ForecastFragment extends Fragment implements SwipeRefreshLayout.OnR
             currentCity = gson.fromJson(city, City.class);
             updateWeatherInfo();
         }
+        mFab = getActivity().findViewById(R.id.add_city_fab);
+        mFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent intent =
+                            new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                                    .build(getActivity());
+                    startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
+                } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
+                    // TODO: Handle the error.
+                }
+            }
+        });
     }
 
     @Override
     public void onPause() {
         super.onPause();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
         Gson gson = new Gson();
         String city = gson.toJson(currentCity);
         sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
@@ -166,6 +147,11 @@ public class ForecastFragment extends Fragment implements SwipeRefreshLayout.OnR
         editor.putString("city_name", mCity);
         editor.putString("country_name", mCountry);
         editor.apply();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
     }
 
     @Override
@@ -184,18 +170,6 @@ public class ForecastFragment extends Fragment implements SwipeRefreshLayout.OnR
 
         if (id == R.id.action_settings){
             startActivity(new Intent(getActivity(), SettingsActivity.class));
-            return true;
-        }
-
-        if (id == R.id.action_add_city){
-            try {
-                Intent intent =
-                        new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
-                                .build(getActivity());
-                startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
-            } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
-                // TODO: Handle the error.
-            }
             return true;
         }
 
@@ -261,21 +235,21 @@ public class ForecastFragment extends Fragment implements SwipeRefreshLayout.OnR
         mMinTemperature.setText(format.format(dailyForecast.getmTemperatureMin()) + "°");
         mMaxTemperature.setText(format.format(dailyForecast.getmTemperatureMax()) + "°");
         mHour.setTimeZone(currentWeather.getmTimeZone());
-        mWindSpeed.setText(format.format(currentWeather.getmWindSpeed()) + " Mph");
-        mHumidity.setText(format.format(currentWeather.getmHumidity()) + "%");
-        mSunrise.setText(dailyForecast.getmSunriseTime());
-        mPressure.setText(format.format(currentWeather.getmPressure()) + " mb");
-        mDewPoint.setText(format.format(currentWeather.getmDewPoint()) + "°");
-        mSunset.setText(dailyForecast.getmSunsetTime());
-        mMoonPhase.setText(moonPhase(dailyForecast.getmMoonPhase()));
+//        mWindSpeed.setText(format.format(currentWeather.getmWindSpeed()) + " Mph");
+//        mHumidity.setText(format.format(currentWeather.getmHumidity()) + "%");
+//        mSunrise.setText(dailyForecast.getmSunriseTime());
+//        mPressure.setText(format.format(currentWeather.getmPressure()) + " mb");
+//        mDewPoint.setText(format.format(currentWeather.getmDewPoint()) + "°");
+//        mSunset.setText(dailyForecast.getmSunsetTime());
+//        mMoonPhase.setText(moonPhase(dailyForecast.getmMoonPhase()));
 
         // Recycler View variables
         RecyclerView mHourlyForecast = getActivity().findViewById(R.id.hourly_forecast_recycler_view);
-        ;
+
         RecyclerView mDailyForecast = getActivity().findViewById(R.id.daily_forecast_recycler_view);
-        ;
+
         RecyclerView.LayoutManager mDailyLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        ;
+
         RecyclerView.LayoutManager mHourlyLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mDailyForecast.setHasFixedSize(true);
         mHourlyForecast.setHasFixedSize(true);
@@ -347,14 +321,14 @@ public class ForecastFragment extends Fragment implements SwipeRefreshLayout.OnR
         mCurrentData = getActivity().findViewById(R.id.now_card);
         mNextDays = getActivity().findViewById(R.id.daily_forecast_card);
         mNextHours = getActivity().findViewById(R.id.hourly_forecast_card);
-        mOtherData = getActivity().findViewById(R.id.more_data_card);
-        mWindSpeed = getActivity().findViewById(R.id.wind_speed);
-        mHumidity = getActivity().findViewById(R.id.humidity);
-        mSunrise = getActivity().findViewById(R.id.sunrise);
-        mPressure = getActivity().findViewById(R.id.pressure);
-        mDewPoint = getActivity().findViewById(R.id.dew_point);
-        mSunset = getActivity().findViewById(R.id.sunset);
-        mMoonPhase = getActivity().findViewById(R.id.moon_state);
+//        mOtherData = getActivity().findViewById(R.id.more_data_card);
+//        mWindSpeed = getActivity().findViewById(R.id.wind_speed);
+//        mHumidity = getActivity().findViewById(R.id.humidity);
+//        mSunrise = getActivity().findViewById(R.id.sunrise);
+//        mPressure = getActivity().findViewById(R.id.pressure);
+//        mDewPoint = getActivity().findViewById(R.id.dew_point);
+//        mSunset = getActivity().findViewById(R.id.sunset);
+//        mMoonPhase = getActivity().findViewById(R.id.moon_state);
         mWeatherIcon = getActivity().findViewById(R.id.weather_icon);
     }
 
@@ -370,7 +344,7 @@ public class ForecastFragment extends Fragment implements SwipeRefreshLayout.OnR
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
                 mCurrentData.setCardBackgroundColor((Integer) animator.getAnimatedValue());
-                mOtherData.setCardBackgroundColor((Integer) animator.getAnimatedValue());
+//                mOtherData.setCardBackgroundColor((Integer) animator.getAnimatedValue());
             }
 
         });
@@ -482,6 +456,7 @@ public class ForecastFragment extends Fragment implements SwipeRefreshLayout.OnR
                         key = appInfo.metaData.getString("dark_sky_api_key");
                     }
                 } catch (PackageManager.NameNotFoundException e) {
+                    Log.e("Forecast Fragment", "error", e);
                 }
 
                 // API site params title constants
@@ -496,7 +471,6 @@ public class ForecastFragment extends Fragment implements SwipeRefreshLayout.OnR
                 // String that contains the API URL
                 String baseUrl = builtUri.toString();
 
-                // Add the API key to the URL
                 URL url = new URL(baseUrl);
 
                 // Create the request to OpenWeatherMap, and open the connection

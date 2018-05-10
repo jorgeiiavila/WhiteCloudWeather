@@ -25,7 +25,9 @@ public abstract class Weather {
     double mPressure;
 
     abstract void celsiusToFahrenheit();
+
     abstract void fahrenheitToCelsius();
+
     abstract void unixToHour();
 
     protected double convertToCelsius(double fahrenheit) {
